@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono&display=swap');
+
+body {
+    background: url('/public/images/stars.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+canvas {
+    position: absolute;
+    left: -3;
+}
+
+.BFS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 73vh;
+}
+
+.title {
+    font-size: 52px;
+    font-family: 'Handjet', sans-serif;
+}
+
+.bio-text {
+    font-size: 18px;
+    text-shadow: 1px 1px 2px #000000;
+    font-family: 'Victor Mono', monospace;
+}
+
+.bio-container {
+    background-color: #746d6d33;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
