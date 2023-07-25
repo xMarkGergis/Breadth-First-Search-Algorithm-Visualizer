@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Breadth-First Search Algorithm Visualization
+[Here is the website](https://www.visualizebfs.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This project provides an interactive visualization of the BFS algorithm on a hexagonal grid. It was created using JavaScript, React, HTML, and CSS to deliver a user-friendly interface for exploring the BFS algorithm in action. The application allows you to set a starting point, place obstacles, and witness how the BFS algorithm efficiently finds the shortest path to all reachable cells from the starting point.
 
-## Available Scripts
+## Visuals
+![ex1](https://github.com/Markgergis100/Chess-Engine/assets/121286835/c86f3842-d0b3-4bc8-a9ff-c13c90e6b2eb)
+![ex2](https://github.com/Markgergis100/Chess-Engine/assets/121286835/038f9a3a-8fe5-461d-997c-288e9fc84176)
 
-In the project directory, you can run:
+## Features
+- Hexagonal grid visualization
+- Interactivity with the grid to set the starting point and observe the BFS process
+- Placing obstacles on the grid to create obstacles that cannot be traversed
+- Dynamic updates of the grid as the BFS algorithm explores
+- Visualization of the shortest path found by the algorithm
 
-### `npm start`
+## How It Works
+The visualization is based on a hexagonal grid, where each cell is represented as a cube coordinate (q, r, s). The BFS algorithm explores neighboring cells in a breadth-first manner to find the shortest path from the starting point to all reachable cells.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The algorithm maintains a "frontier" of cells to explore and a "cameFrom" object that tracks the path from each cell to its previous cell in the BFS traversal. As the algorithm explores the grid, it marks each visited cell and updates the "cameFrom" object accordingly. This information is then used to visualize the BFS process and the shortest path.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The Hexagonal Grids from Red Blob Games website were used as a reference to implement concepts like linear interpolation to draw lines and calculate hexagonal coordinates.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please do report any issues and/or provide feedback so that I may perhaps enhance this application to better serve its user further!
