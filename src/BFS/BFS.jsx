@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import './BFS.css';
 
 var DUMMY_OBSTACLES = ['{"q":6,"r":9,"s":-15}','{"q":7,"r":8,"s":-15}','{"q":7,"r":7,"s":-14}','{"q":8,"r":6,"s":-14}','{"q":8,"r":5,"s":-13}','{"q":9,"r":4,"s":-13}','{"q":5,"r":9,"s":-14}','{"q":4,"r":9,"s":-13}','{"q":3,"r":9,"s":-12}','{"q":2,"r":9,"s":-11}','{"q":1,"r":9,"s":-10}','{"q":0,"r":9,"s":-9}','{"q":-1,"r":9,"s":-8}','{"q":-2,"r":9,"s":-7}','{"q":-3,"r":9,"s":-6}','{"q":-4,"r":9,"s":-5}','{"q":-5,"r":9,"s":-4}','{"q":-6,"r":9,"s":-3}','{"q":-7,"r":9,"s":-2}','{"q":-8,"r":9,"s":-1}','{"q":-9,"r":9,"s":0}','{"q":-11,"r":9,"s":2}','{"q":-10,"r":9,"s":1}','{"q":-12,"r":9,"s":3}','{"q":-13,"r":9,"s":4}','{"q":-14,"r":9,"s":5}','{"q":-15,"r":9,"s":6}','{"q":-15,"r":8,"s":7}','{"q":-14,"r":7,"s":7}','{"q":-14,"r":6,"s":8}','{"q":-13,"r":5,"s":8}',
@@ -54,7 +53,6 @@ export default class BFS extends React.Component{
 
     shouldComponentUpdate(nextProps, nextState){    // updates canvas bases on changes in state as well as controls update flow
         if(nextState.currentHex !== this.state.currentHex){
-            const{q, r, s, x, y} = nextState.currentHex;
             const{canvasWidth, canvasHeight} = this.state.canvasSize;
             const ctx = this.canvasInteraction.getContext("2d");    // get 2d for canvasinteraction element
             ctx.clearRect(0, 0, canvasWidth, canvasHeight); // clears canvas to allow for redrawing
@@ -66,7 +64,7 @@ export default class BFS extends React.Component{
             const ctx = this.canvasView.getContext("2d");
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
             for (let l in nextState.cameFrom){  // loops throgh each item in came from to draw arrows between hexes
-                const{q,r,s} = JSON.parse(l);   // parses string rep of the hex coords into q,r,s
+                const{q,r} = JSON.parse(l);   // parses string rep of the hex coords into q,r,s
                 const{x,y} = this.hexToPixel(this.Hex(q, r));
                 this.drawHex(this.canvasView, this.Point(x, y), 1, "black", "grey", 0.1);
                 var from = JSON.parse(nextState.cameFrom[l]);   // parse string rep of the from hex coords into q,r,s
@@ -188,7 +186,6 @@ export default class BFS extends React.Component{
     }
 
     handleMouseMove(e){ // handle mouse move event to update the current hex and its details
-        const {left, right, top, bottom} = this.state.canvasPosition;
         const {canvasWidth, canvasHeight} = this.state.canvasSize;
         const {hexWidth, hexHeight} = this.state.HexParameters;
         const offsetX = e.nativeEvent.offsetX;  // calculates off set of mouse pointer relative to canvas
@@ -326,7 +323,7 @@ export default class BFS extends React.Component{
     }
 
     drawObstacles() {
-        this.state.obstacles.map((l)=>{
+        this.state.obstacles.forEach((l)=>{
             const{q,r,s} = JSON.parse(l);
             const{x, y} = this.hexToPixel(this.Hex(q,r,s));
             this.drawHex(this.canvasHex, this.Point(x,y), 1, "black", "black")
@@ -348,21 +345,21 @@ export default class BFS extends React.Component{
 
     breadthFirstSearch(playerPosition){ // performs bfs on hex grid
         var frontier = [playerPosition];
-        var cameFrom = {};
+        const cameFrom = {};
         cameFrom[JSON.stringify(playerPosition)] = JSON.stringify(playerPosition);
-        while(frontier.length != 0){    // explore neigbors of each hex in the frontier to find the path
-            var current = frontier.shift();
+        while(frontier.length !== 0){    // explore neigbors of each hex in the frontier to find the path
+            const current = frontier.shift();
             let arr = this.getNeighbors(current);
-            arr.map((l)=>{
+            arr.forEach((l)=>{
                 if(!cameFrom.hasOwnProperty(JSON.stringify(l)) && this.state.hexPathMap.includes(JSON.stringify(l))) {  // checks if the current neighbor is not in the came from object and is included in hex path map arr
                     frontier.push(l);
                     cameFrom[JSON.stringify(l)] = JSON.stringify(current);
                 }
-            })
+            }, this)
         }
-        cameFrom = Object.assign({}, cameFrom); // sets camefrom object in the component state
+        const newCameFrom = Object.assign({}, cameFrom); // sets camefrom object in the component state
         this.setState({
-            cameFrom: cameFrom
+            cameFrom: newCameFrom
         })
     }
 
@@ -370,9 +367,9 @@ export default class BFS extends React.Component{
         const{ cameFrom } = this.state;
         start = JSON.stringify(start);
         current = JSON.stringify(current);
-        if(cameFrom[current] != undefined){
+        if(cameFrom[current] !== undefined){
             var path = [current];
-            while(current != start){
+            while(current !== start){
                 current = cameFrom[current];
                 path.push(current);
             }
