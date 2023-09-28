@@ -20,6 +20,6 @@ Each cell is represented as a cube coordinate (q, r, s). The BFS algorithm explo
 
 The algorithm maintains a frontier of cells to explore and a cameFrom object that tracks the path from each cell to its previous cell in the BFS traversal. As the algorithm explores the grid, it marks each visited cell and updates the ameFrom object accordingly. This information then visualizes the BFS process and the shortest path.
 
-The Hexagonal Grids from Red Blob Games website were used as a reference to implement concepts like linear interpolation to draw lines and calculate hexagonal coordinates.
+The Hexagonal Grids from [Red Blob Games website](https://www.redblobgames.com/grids/hexagons/) were used as a reference to implement concepts like linear interpolation to draw lines and calculate hexagonal coordinates.
 
 Please report any issues and/or provide feedback so that I may enhance this application to serve its user better!
