@@ -18,7 +18,7 @@ This project provides an interactive visualization of the BFS algorithm on a hex
 ## How It Works
 Each cell is represented as a cube coordinate (q, r, s). The BFS algorithm explores the neighboring cell's breadth first to find the shortest path from the starting point to all reachable cells.
 
-The algorithm maintains a frontier of cells to explore and a cameFrom object that tracks the path from each cell to its previous cell in the BFS traversal. As the algorithm explores the grid, it marks each visited cell and updates the ameFrom object accordingly. This information then visualizes the BFS process and the shortest path.
+The algorithm maintains a frontier of cells to explore and a cameFrom object that tracks the path from each cell to its previous cell in the BFS traversal. As the algorithm explores the grid, it marks each visited cell and updates the cameFrom object accordingly. This information then visualizes the BFS process and the shortest path.
 
 The Hexagonal Grids from [Red Blob Games website](https://www.redblobgames.com/grids/hexagons/) were used as a reference to implement concepts like linear interpolation to draw lines and calculate hexagonal coordinates.
 
